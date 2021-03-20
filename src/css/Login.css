@@ -1,0 +1,59 @@
+.body{
+    background-color: rgb(234, 248, 242);
+    height: 100vh;
+}
+
+.login {
+    position: relative;
+    top: 6rem;
+}
+
+.register {
+    position: relative;
+    top: 3rem;
+}
+
+.container {
+    width: 25%;
+    background-color: rgb(77, 74, 87);
+}
+
+h4 {
+    font-family: 'Parisienne', cursive;
+}
+
+h4,h5 {
+    color: mintcream;
+}
+
+input {
+    min-height: 40px;
+    border-radius: 0% !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+.border{
+    border: 3px solid rgb(135, 134, 196) !important;
+    border-radius: 10px;
+    padding: 5px 5px 5px;
+    box-shadow: 4px 4px 4px rgb(67, 83, 88);
+}
+
+.form-group {
+    padding: 5px 5px;
+    width: 75%;
+}
+
+.user-icon {
+    padding: 6px;
+    width: 50px;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    background-color: lightblue;
+}
+
+.f-pwd {
+    color: powderblue;
+}
+

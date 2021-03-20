@@ -1,0 +1,27 @@
+.bg-dark {
+    background-color: black !important;
+}
+.navbar-toggler{
+    color: cornsilk !important;
+    border-color: aquamarine !important;
+    background-color: gray;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
+
+.nav-link {
+    font-family: 'Akronim', cursive;
+    color: rgb(155, 153, 245) !important;
+    font-size: x-large;
+}
+
+
+
+.logo {
+    font-family: 'Parisienne', cursive;
+    font-size: xx-large;
+    color: darkorchid !important;
+    text-shadow: 1px 1px white;
+}
