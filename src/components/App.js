@@ -16,9 +16,10 @@ import Userdashboard from "./Userdashboard";
 
 function App() {
   return (
+    <Router>
     <div className="App">
      <Header />
-     <Router>
+
        <Switch>
          <Route exact path="/">
            <Login />
@@ -42,8 +43,9 @@ function App() {
           <Userdashboard />
          </Route>
         </Switch>
-     </Router>
+     
     </div>
+    </Router>
   );
 }
 
