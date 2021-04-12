@@ -18,7 +18,6 @@ const Login = () => {
             password:e.password
         })
         .then(function (response) {
-
             setToken(response.data.token);
             setSubmitted(true);
         })
@@ -27,7 +26,6 @@ const Login = () => {
         })
     }
 
-      console.log(token);
 
       if (submitted) {
         return <Redirect push to={{

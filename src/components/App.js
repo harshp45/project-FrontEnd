@@ -14,12 +14,15 @@ import FAQ from './FAQ';
 import Registration from "./Registration";
 import Userdashboard from "./Userdashboard";
 
+
+
 function App() {
+
+
   return (
     <Router>
     <div className="App">
      <Header />
-
        <Switch>
          <Route exact path="/">
            <Login />
@@ -42,8 +45,8 @@ function App() {
          <Route path="/userdashboard">
           <Userdashboard />
          </Route>
+
         </Switch>
-     
     </div>
     </Router>
   );
