@@ -89,7 +89,7 @@ const Registration = () => {
                             type="password" 
                             className="form-control" 
                             placeholder="Enter Password" 
-                            {...register("password", { required: true, pattern: /^(?=.*[a-zA-Z])(?=\w*[0-9])\w{6,12}$/ })}/>
+                            {...register("password", { required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/ })}/>
                             <div>{errors.password && "Password is required"}</div>					
                     </div>
                     <div class="form-group d-flex ms-5">
