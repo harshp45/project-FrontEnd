@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useHistory} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import '../css/Menu.css';
 
 const Data = props =>
-{
+{    
     const imgPath=`/dishes/${props.new.image}`
-    console.log(imgPath);
+    console.log(imgPath); 
 
     return(
 
@@ -18,9 +18,8 @@ const Data = props =>
                     <p class="card-text h4 title">{props.new.itemname}</p>
                     <p className="card-text"><b>Location:</b> {props.new.location}</p>
                     <p className="card-text"><b>Price:</b> {props.new.price}</p>
-                    <p className="card-text"><b>SellerName: </b>{props.new.sellername}</p>
                     <p className="card-text"><b>Category: </b>{props.new.category}</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -30,25 +29,28 @@ const Data = props =>
 
 
 
-function Menu() {
-
+function Menu() 
+{
     const [menu, setMenu] = useState([]);
     const [loading,setLoading]=useState(true);
-    let history = useHistory();
-    let location = useLocation();
-
+    let history = useHistory(); 
+    
     
 
     useEffect(()=>{
         
-    if (typeof location.state.userToken == 'undefined')
+    // if (typeof location.state.userToken == 'undefined')
+    // {
+    //     setLoading(false)
+    // }
+    if(localStorage.getItem('token')==="")
     {
-        setLoading(false)
+        setLoading(false);
     }
 
     fetch("https://dishes-backend.herokuapp.com/api/menu/list",{
         headers: {'Content-Type': 'application/json', 
-        'x-access-token':location.state.userToken}
+        'x-access-token':localStorage.getItem('token')}
     })
     .then(response =>response.json())
     .then(data =>{ setMenu(data) })

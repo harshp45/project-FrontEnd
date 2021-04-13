@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import jwt_decode from "jwt-decode";
 import { useForm } from 'react-hook-form';
 import {Redirect} from 'react-router';
 import '../css/Login.css'
@@ -27,12 +28,26 @@ const Login = () => {
     }
 
 
-      if (submitted) {
-        return <Redirect push to={{
-          pathname: '/menu',
-          state:{userToken:token}
-        }}
-        />
+      if (submitted) 
+      {
+        var decoded = jwt_decode(token);
+        localStorage.setItem('token', token);
+        if(decoded.user.type==="seller")
+        {
+            return <Redirect push to={{
+              pathname: '/addDish',
+              state:{userToken:token, user:decoded.user}
+            }}
+            /> 
+        }
+        if(decoded.user.type==="customer")
+        {
+            return <Redirect push to={{
+              pathname: '/menu',
+              state:{userToken:token, user:decoded.user}
+            }}
+            />
+        }
       }
 
     return (

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
+import CartIcon from '@material-ui/icons/ShoppingCart';
 import '../css/Template.css'
 
-function Header() {
+function userHeader() {
 
     return (
             <div>
@@ -14,12 +15,25 @@ function Header() {
                 <div className="collapse navbar-collapse float-end" id="navbarSupportedContent">
                 <ul className="navbar-nav float-end mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <a className="nav-link" href="/">Login </a>
+                    <a className="nav-link" href="/menu">Menu</a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="/registration">Register </a>
+                    <a className="nav-link" href="/contactus">Contact Us</a>
                     </li>
-                    
+                    <li className="nav-item">
+                    <a className="nav-link" href="/aboutus">About Us</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link" href="/faq">FAQ</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link" href="/logout">Logout </a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link" href="/cart">
+                        <CartIcon/>
+                        </a>
+                    </li>
                 </ul>
                 </div>
             </div>
@@ -28,4 +42,4 @@ function Header() {
     )
 }
 
-export default Header
+export default userHeader;
