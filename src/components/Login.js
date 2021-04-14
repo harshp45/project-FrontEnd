@@ -36,7 +36,7 @@ const Login = () => {
         {
             return <Redirect push to={{
               pathname: '/addDish',
-              state:{userToken:token, user:decoded.user}
+              state:{userToken:token}
             }}
             /> 
         }
@@ -44,7 +44,7 @@ const Login = () => {
         {
             return <Redirect push to={{
               pathname: '/menu',
-              state:{userToken:token, user:decoded.user}
+              state:{userToken:token}
             }}
             />
         }

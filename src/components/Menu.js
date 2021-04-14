@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory} from "react-router-dom";
+import { useLocation, Link} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import '../css/Menu.css';
 
 const Data = props =>
@@ -19,6 +21,7 @@ const Data = props =>
                     <p className="card-text"><b>Location:</b> {props.new.location}</p>
                     <p className="card-text"><b>Price:</b> {props.new.price}</p>
                     <p className="card-text"><b>Category: </b>{props.new.category}</p>
+                    <p className="card-text"><b>User: </b>{props.currentUser.firstname}</p>
                     <button class="btn btn-primary">Add to Cart</button>
                 </div>
             </div>
@@ -32,25 +35,29 @@ const Data = props =>
 function Menu() 
 {
     const [menu, setMenu] = useState([]);
+    const [user, setUser] = useState([]);
     const [loading,setLoading]=useState(true);
+    let location = useLocation();
     let history = useHistory(); 
     
     
 
     useEffect(()=>{
-        
-    // if (typeof location.state.userToken == 'undefined')
-    // {
-    //     setLoading(false)
-    // }
-    if(localStorage.getItem('token')==="")
-    {
-        setLoading(false);
-    }
+        var token = localStorage.getItem('token');
+        console.log(token);
+        if(token==="")
+        {
+            setLoading(false);
+        }
+        else
+        {
+            var decoded = jwt_decode(token);
+            setUser(decoded.user);
+        }
 
     fetch("https://dishes-backend.herokuapp.com/api/menu/list",{
         headers: {'Content-Type': 'application/json', 
-        'x-access-token':localStorage.getItem('token')}
+        'x-access-token':token}
     })
     .then(response =>response.json())
     .then(data =>{ setMenu(data) })
@@ -59,7 +66,7 @@ function Menu()
 
     function menuList(){
         return menu.map(data=>{
-            return <Data new={data}/>
+            return <Data new={data} currentUser={user}/>
         })
     }
   

@@ -65,7 +65,7 @@ const Registration = () => {
                             type="text" 
                             className="form-control" 
                             placeholder="Enter Phone Number" 
-                            {...register("phone", { required: true})}/>
+                            {...register("phone", { required: true, pattern:/[0-9]{10}/})}/>
                             <div>{errors.phone && "Phone Number is required"}</div>					
                     </div>
                     <div class="form-group d-flex ms-5">
