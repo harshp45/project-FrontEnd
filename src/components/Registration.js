@@ -93,11 +93,11 @@ const Registration = () => {
                             <div>{errors.password && "Password is required"}</div>					
                     </div>
                     <div class="form-group d-flex ms-5">
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            placeholder="Enter Type" 
-                            {...register("type", { required: true})}/>
+                            <select  className="form-control"  {...register("type", { required: "select one option"})}>
+                                <option value="">--Select Type--</option>
+                                <option value="customer">Customer</option>
+                                <option value="seller">Seller</option>
+                            </select>
                             <div>{errors.type && "Type is required"}</div>					
                     </div>
                     <div className="form-group d-flex ms-5 justify-content-evenly">

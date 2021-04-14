@@ -8,13 +8,14 @@ import '../css/App.css';
 import Login from './Login';
 import Logout from './Logout';
 import Header from './Header';
-import UserHeader from './userHeader';
+import UserHeader from './UserHeader';
 import Menu from './Menu';
 import About from './About';
 import ContactUS from './ContactUs';
-import FAQ from './FAQ';
 import Cart from './Cart';
 import AddDishes from './AddDishes';
+import AdminDishes from './AdminDishes';
+import AdminHeader from './AdminHeader';
 import Registration from "./Registration";
 import Userdashboard from "./Userdashboard";
 
@@ -48,9 +49,9 @@ function App() {
           <Menu />
          </Route>
 
-         <Route path="/faq">
-          <UserHeader />
-            <FAQ />
+         <Route path="/myDishes">
+          <AdminHeader/>
+          <AdminDishes/>
          </Route>
 
          <Route path="/contactus">
@@ -63,7 +64,7 @@ function App() {
          </Route>
 
          <Route path="/addDish">
-            <UserHeader />
+            <AdminHeader/>
             <AddDishes />
          </Route>
 
