@@ -1,94 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory} from "react-router-dom";
-import { useLocation, Link} from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import React, { Component } from 'react';
 import '../css/Menu.css';
 
-const Data = props =>
-{    
-    const imgPath=`/dishes/${props.new.image}`
-    console.log(imgPath); 
+const Data = (props) => {
+    const arrayBufferToBase64 = (buffer) => {
+        let binary = '';
+        let bytes = new Uint8Array(buffer);
+        let len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+      };
 
     return(
-
-        <div className="mx-auto row w-50 h mt-5">
-            <div className="border mx-5 col-sm card-color h  overflow-auto menu-items d-flex">
-                <div className="col-sm-8">
-                    <img src={imgPath} alt="Dishes" className="menu-picture "/>
+            <div className="mx-auto w-100 row col-sm-12 h mt-5">
+                <div className="border mx-5 col-sm card-color h overflow-auto">
+                    <img src={{uri: 'data:image/png;base64' + arrayBufferToBase64(props.menuitems.image.data)}} />
+                    <p class="card-text">{props.menuitems.itemname}</p>
+                    <p className="card-text"><b>Location:</b> {props.menuitems.location}</p>
+                    <p className="card-text"><b>Price:</b> {props.menuitems.price}</p>
+                    <p className="card-text"><b>SellerName: </b>{props.menuitems.sellername}</p>
+                    <p className="card-text"><b>Category: </b>{props.menuitems.category}</p>
+                    <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
-                <div className="col-sm-4 text-sm-left">
-                    <p class="card-text h4 title">{props.new.itemname}</p>
-                    <p className="card-text"><b>Location:</b> {props.new.location}</p>
-                    <p className="card-text"><b>Price:</b> {props.new.price}</p>
-                    <p className="card-text"><b>Category: </b>{props.new.category}</p>
-                    <p className="card-text"><b>User: </b>{props.currentUser.firstname}</p>
-                    <button class="btn btn-primary">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    )
+            </div> 
+            
+)}
 
-}
+class Menu extends Component {
 
+    constructor(props) {
+        super(props);
 
-
-function Menu() 
-{
-    const [menu, setMenu] = useState([]);
-    const [user, setUser] = useState([]);
-    const [loading,setLoading]=useState(true);
-    let location = useLocation();
-    let history = useHistory(); 
-    
-    
-
-    useEffect(()=>{
-        var token = localStorage.getItem('token');
-        console.log(token);
-        if(token==="")
-        {
-            setLoading(false);
+        this.state = {
+            loading: true,
+            menu: [],
+            flag: false
         }
-        else
-        {
-            var decoded = jwt_decode(token);
-            setUser(decoded.user);
-        }
+    }
 
-    fetch("https://dishes-backend.herokuapp.com/api/menu/list",{
-        headers: {'Content-Type': 'application/json', 
-        'x-access-token':token}
-    })
-    .then(response =>response.json())
-    .then(data =>{ setMenu(data) })
-    }, []);
+    async componentDidMount() {
+
+        // //GetToken
+        // const uToken = "https://dishes-backend.herokuapp.com/api/user/token";
+        // const uTokenResponse = await fetch(uToken, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-type': 'application/json',
+        //     }
+        // });
+        // const Tokendata = await uTokenResponse.json();
+        // const token = Tokendata.token;
+
+        //Fetching Menuitems
+        const Murl = "https://dishes-backend.herokuapp.com/api/menu/list";
+        const MenuResponse = await fetch(Murl, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json'
+                // 'x-access-token': token
+            }
+        });
+        const menudata = await MenuResponse.json();
+        this.setState({ menu: menudata, loading: false })
+        console.log(this.state.menu);
+    }
+
+    
 
 
-    function menuList(){
-        return menu.map(data=>{
-            return <Data new={data} currentUser={user}/>
+    menulist() {
+        return this.state.menu.map(menudata => {
+            return <Data menuitems={menudata} />
         })
     }
-  
 
 
-    return (
-        <div>
-            <center><h1>Menu</h1></center>
+    render() {
+        return (
+            <div>
+                <center><h1>Menu</h1></center>
+                {this.state.loading || !this.state.menu ? (
+                    <div>Loading...</div>
+                ) : (
+                        <div>
+                            {this.menulist()}
+                        </div>
+                    )}
+            </div>
 
-        {loading?(
-            <>
-                {menuList()}
-            </>
-
-        ):(
-            <>
-                {history.push("/")}
-            </>
-        )}
-        </div>
-
-    )
+        )
+    }
 }
 
 export default Menu;
