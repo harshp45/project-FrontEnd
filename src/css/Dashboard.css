@@ -1,6 +1,12 @@
 .dash-main-div{
-    align-items: center;
-    margin: 0px;
-    margin-top: 250px;
-    width: 100%;
+    justify-content: center;
+    margin-top: 0.75px;
+    width: 80%;
+    height: 50% ;
 }
+.m-image {
+    width: 125%;
+    height: 648px;
+    z-index: -1;
+    /* mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
+  }
