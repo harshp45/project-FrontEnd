@@ -1,9 +1,10 @@
 import React from 'react'
+import '../css/Dashboard.css';
 
 const Userdashboard = () => {
     return (
-        <div>
-            <button>Order Now</button>
+        <div className="dash-main-div">
+            
         </div>
     )
 }

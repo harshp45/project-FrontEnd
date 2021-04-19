@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory} from "react-router-dom";
 
 
-function ContactUS() {
+function Cart() {
 
     const [loading, setLoading]=useState(true);
     let history = useHistory(); 
@@ -17,10 +17,10 @@ function ContactUS() {
  
   return (
     <div>
-        <center><h1>Contact US Page</h1></center>
+        <center><h1>Cart Page</h1></center>
         {loading?(
             <>
-                <p>This is contact us page!!</p>
+                <p>This is cart page!!</p>
             </>
 
         ):(
@@ -32,4 +32,4 @@ function ContactUS() {
   );
 }
 
-export default ContactUS;
+export default Cart;
