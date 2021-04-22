@@ -1,12 +1,17 @@
-.dash-main-div{
-    justify-content: center;
-    margin-top: 0.75px;
-    width: 80%;
-    height: 50% ;
-}
 .m-image {
-    width: 125%;
-    height: 648px;
+    width: 100%;
+    height: 89vh;
     z-index: -1;
-    /* mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
-  }
+}
+
+.form-posi {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #116466;
+}   
+
+.form-select {
+    width: auto !important;
+}

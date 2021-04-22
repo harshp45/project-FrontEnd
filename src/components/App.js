@@ -14,8 +14,6 @@ import About from './About';
 import ContactUS from './ContactUs';
 import Cart from './Cart';
 import AddDishes from './AddDishes';
-import AdminDishes from './AdminDishes';
-import AdminHeader from './AdminHeader';
 import Registration from "./Registration";
 import Userdashboard from "./Userdashboard";
 
@@ -49,11 +47,6 @@ function App() {
           <Menu />
          </Route>
 
-         <Route path="/myDishes">
-          <AdminHeader/>
-          <AdminDishes/>
-         </Route>
-
          <Route path="/contactus">
             <UserHeader />
             <ContactUS />
@@ -64,7 +57,7 @@ function App() {
          </Route>
 
          <Route path="/addDish">
-            <AdminHeader/>
+            <UserHeader />
             <AddDishes />
          </Route>
 
@@ -74,10 +67,9 @@ function App() {
          </Route>
 
          <Route path="/userdashboard">
-          <UserHeader />
-          <Userdashboard />
+            <UserHeader />
+            <Userdashboard />
          </Route>
-
         </Switch>
     </div>
     </Router>

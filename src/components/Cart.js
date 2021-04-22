@@ -24,12 +24,17 @@ function Cart() {
             var decoded = jwt_decode(token);
             setUser(decoded.user);
         }
-        fetch("https://dishes-backend.herokuapp.com/api/cart/list",{
+        fetch("https://dishes-backend.herokuapp.com/api/cart/listbyuser",{
+            method: 'POST',
+            body:JSON.stringify({email:"niks007@gmail.com"}),
             headers: {'Content-Type': 'application/json', 
             'x-access-token':token}
         })
         .then(response =>response.json())
-        .then(data =>{ setCart(data) })
+        .then(data =>
+            {
+                setCart(data) 
+            })
     }, []);
 
     console.log("Outside Token: "+token);
@@ -44,7 +49,7 @@ function Cart() {
                         <h3>Hello, {user.firstname}</h3>
                         <h3 className="checkout__title">Your Cart</h3>
 
-                        {cart.filter(item => item.user===user.email).map(item => (
+                        {cart.map(item => (
                             <CartProduct
                             id={item._id}
                             itemname={item.itemname}

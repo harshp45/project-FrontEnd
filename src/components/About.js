@@ -37,7 +37,7 @@ function About() {
                   </h3>
                 </div>
                 <div className="col-6">
-                  <h3 className="text-lg-left text-info mt-4">
+                  <h3 className="text-lg-right text-info mt-4">
                     <a href="https://www.linkedin.com/in/harsh-patel-935816115/" rel="external" className="text-success">Harsh Patel</a> <br></br>
                   </h3>
                 </div>

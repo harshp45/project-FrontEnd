@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {Redirect} from 'react-router'
 import '../css/Registration.css'
-
+import { Link } from 'react-router-dom';
 const Registration = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
     const [user, setUser] = useState([]);
@@ -42,6 +42,9 @@ const Registration = () => {
                     <h4>Registration</h4>
                     <form onSubmit={handleSubmit(submit)}>
                     <div className="form-group d-flex ms-5">
+                        <span className="user-icon">
+                        <i className="fas fa-user"></i>
+                        </span>
                         <input 
                             type="text" 
                             className="form-control" 
@@ -51,7 +54,10 @@ const Registration = () => {
                         
                         
                     </div>
-                    <div class="form-group d-flex ms-5">
+                    <div className="form-group d-flex ms-5">
+                        <span className="user-icon">
+                        <i className="fas fa-user"></i>
+                        </span>
                         <input 
                             type="text" 
                             className="form-control" 
@@ -60,7 +66,10 @@ const Registration = () => {
                             <div>{errors.lastname && "Last Name is required"}</div>
                         
                     </div>
-                    <div class="form-group d-flex ms-5">
+                    <div className="form-group d-flex ms-5">
+                    <span className="user-icon">
+                    <i className="fas fa-phone"></i>
+                        </span>
                         <input 
                             type="text" 
                             className="form-control" 
@@ -68,7 +77,10 @@ const Registration = () => {
                             {...register("phone", { required: true, pattern:/[0-9]{10}/})}/>
                             <div>{errors.phone && "Phone Number is required"}</div>					
                     </div>
-                    <div class="form-group d-flex ms-5">
+                    <div className="form-group d-flex ms-5">
+                    <span className="user-icon">
+                    <i className="fas fa-map-pin"></i>
+                        </span>
                         <input 
                             type="text" 
                             className="form-control" 
@@ -76,7 +88,10 @@ const Registration = () => {
                             {...register("address", { required: true})}/>
                             <div>{errors.address && "Address is required"}</div>					
                     </div>
-                    <div class="form-group d-flex ms-5">
+                    <div className="form-group d-flex ms-5">
+                    <span className="user-icon">
+                        <i className="fas fa-envelope-square"></i>
+                        </span>
                         <input 
                             type="text" 
                             className="form-control" 
@@ -84,7 +99,10 @@ const Registration = () => {
                             {...register("email", { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ })}/>
                             <div>{errors.email && "Email is required"}</div>					
                     </div>
-                    <div class="form-group d-flex ms-5">
+                    <div className="form-group d-flex ms-5">
+                    <span className="user-icon">
+                    <i className="fas fa-unlock"></i>
+                        </span>
                         <input 
                             type="password" 
                             className="form-control" 
@@ -92,8 +110,11 @@ const Registration = () => {
                             {...register("password", { required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/ })}/>
                             <div>{errors.password && "Password is required"}</div>					
                     </div>
-                    <div class="form-group d-flex ms-5">
-                            <select  className="form-control"  {...register("type", { required: "select one option"})}>
+                    <div className="form-group d-flex ms-5">
+                    <span className="user-icon">
+                    <i className="fas fa-users-cog"></i>
+                        </span>
+                        <select className="form-control"  {...register("type", { required: "select one option"})}>
                                 <option value="">--Select Type--</option>
                                 <option value="customer">Customer</option>
                                 <option value="seller">Seller</option>
@@ -101,13 +122,13 @@ const Registration = () => {
                             <div>{errors.type && "Type is required"}</div>					
                     </div>
                     <div className="form-group d-flex ms-5 justify-content-evenly">
-                        <button type="submit" className="btn btn-primary ">Register</button>
+                        <button type="submit" className="btn btn-color ">Register</button>
                     </div>
                     </form>
                     <hr></hr>
                     <div className=" d-flex justify-content-evenly">
                         <h5 className="mt-2 mb-3">Already Registered?</h5>
-                        <a href="/"><button className="btn btn-info mb-2"> Login</button></a>
+                        <Link to="/"><button className="btn btn-color mb-2"> Login</button></Link>
                     </div>
                 </div>
         </div>

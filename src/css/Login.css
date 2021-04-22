@@ -14,7 +14,7 @@
 }
 
 .container {
-    width: 25%;
+    width: 35%;
     background-color: rgb(77, 74, 87);
 }
 
@@ -26,7 +26,7 @@ h4,h5 {
     color: mintcream;
 }
 
-input {
+input,select {
     min-height: 40px;
     border-radius: 0% !important;
     border-top-right-radius: 5px !important;
@@ -37,7 +37,7 @@ input {
     border: 3px solid rgb(135, 134, 196) !important;
     border-radius: 10px;
     padding: 5px 5px 5px;
-    box-shadow: 4px 4px 4px rgb(67, 83, 88);
+    box-shadow: 4px 4px 4px rgb(156 175 181);;
 }
 
 .form-group {
@@ -57,3 +57,33 @@ input {
     color: powderblue;
 }
 
+.btn-color{
+    background-color: #51ffd6 !important;
+    color: rgb(48, 40, 40);
+}
+
+.btn:hover {
+    box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+  }
+  
+.btn:before {
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(146, 148, 248, 0.4),
+      transparent
+    );
+    transition: all 650ms;
+}
+  
+.btn:hover:before {
+    left: 100%;
+}
+  
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="container"] {
+      width: 100%;
+    }
+  }

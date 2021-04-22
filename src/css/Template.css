@@ -12,16 +12,28 @@
 }
 
 .nav-link {
-    font-family: 'Akronim', cursive;
-    color: rgb(155, 153, 245) !important;
-    font-size: x-large;
+    color: #fa5012 !important;
+    font-size: large;
 }
-
-
 
 .logo {
     font-family: 'Parisienne', cursive;
     font-size: xx-large;
-    color: darkorchid !important;
-    text-shadow: 1px 1px white;
+    color: #adf845 !important;
+    text-shadow: 0.3px 0.3px white;
+}
+
+.fa-map-marker-alt{
+    font-size: 48px;
+    color: rgb(219, 35, 35);
+}
+
+.location {
+    color: rgb(82, 97, 52);
+    font-weight: bold;
+    font-size: medium;
+}
+
+.h4-color {
+    color: black;
 }

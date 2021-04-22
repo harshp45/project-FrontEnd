@@ -58,7 +58,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(submit)}>
                     <div className="form-group d-flex ms-5">
                         <span className="user-icon">
-                        <i className="fas fa-user"></i>
+                        <i className="fas fa-envelope-square"></i>
                         </span>
                         <input 
                             type="text" 
@@ -77,14 +77,14 @@ const Login = () => {
                             <div>{errors.password && "Password is required"}</div>						
                     </div>
                     <div className="form-group d-flex ms-5 justify-content-evenly">
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-color">Submit</button>
                         <a className="mt-2 f-pwd">Forgot password?</a>
                     </div>
                 </form>
                 <hr></hr>
                     <div className=" d-flex justify-content-evenly">
                         <h5 className="mt-2 mb-3">New user?</h5>
-                        <a href="/registration"><button className="btn btn-info mb-2"> Register</button></a>
+                        <a href="/registration"><button className="btn btn-color mb-2"> Register</button></a>
                     </div>
                 </div>
         </div>
