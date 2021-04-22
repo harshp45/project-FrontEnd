@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory} from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import Subtotal from './Subtotal';
 import CartProduct from './CartProduct';
+import '../css/cart.css'
 
 function Cart() {
     
@@ -10,6 +12,7 @@ function Cart() {
     const [token, setToken] = useState("");
     const [loading, setLoading]=useState(true);
     const [user, setUser] = useState([]);
+    const [total, setTotal] = useState(0);
     let history = useHistory(); 
 
     useEffect(()=>{
@@ -32,23 +35,49 @@ function Cart() {
         })
         .then(response =>response.json())
         .then(data =>
-            {
-                setCart(data) 
-            })
+        {
+            setCart(data) 
+        })
+
+
     }, []);
 
     console.log("Outside Token: "+token);
     console.log("Cart:" +JSON.stringify(cart));
 
+    var count = 0;
+    var itemCount = cart.length;
+    for(var i=0;i<cart.length;i++)
+    {
+        
+        count = count + cart[i].price
+        
+    }
+    console.log(itemCount);
+    console.log("Total Price: $"+count);
+
   return (
     <div>
         {loading?(
-                <div className="checkout">
+                <div className="cart-main-div">
+                    <h3>Hello, {user.firstname}</h3>
+                    <div className="div-flex">
+                    <div className="cart-subtotal">
+                        <h3>Your Order Cart</h3>
+                    </div>
+                    <div>
+                        <span>
+                            <Subtotal 
+                            totalprice={count}
+                            totalproducts={itemCount}
+                            />
+                        </span>
+                    </div>
+                    </div>
+                   
+                    <div className="nav-line"></div>
                     <div>
                         
-                        <h3>Hello, {user.firstname}</h3>
-                        <h3 className="checkout__title">Your Cart</h3>
-
                         {cart.map(item => (
                             <CartProduct
                             id={item._id}
@@ -63,9 +92,7 @@ function Cart() {
 
                     </div>
 
-                    <div className="checkout__right">
-                        {/* <Subtotal /> */}
-                    </div>
+                   
                 </div>
         ):(
             <>

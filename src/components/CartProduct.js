@@ -24,13 +24,13 @@ function CartProduct({ id, image, itemname, price, category, quantity, hideButto
 
     return (
         <div>
-        <div className='checkoutProduct'>
+        <div className='cartProduct-main-div'>
             <div className="cartImage">
                 <img src={imgPath} />
             </div>
 
-            <div className='checkoutProduct__info'>
-                <p className='checkoutProduct__title'>{itemname}</p>
+            <div className='cartProductDetails'>
+                <p className='Product-title'>{itemname}</p>
                 <div>
                     <p>Category: <strong>{category}</strong></p>
                     <p>Quantity: <strong>{quantity}</strong></p>
