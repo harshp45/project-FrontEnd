@@ -47,12 +47,13 @@ const AddDishes = () => {
                 setSubmitted(true) 
                 response.json()})
         .then(data => setMenu(data))
-        }
+    }
 
       
 
 
-      if (submitted) {
+      if (submitted) 
+      {
         return <Redirect push to={{
           pathname: '/myDishes',
         }}
@@ -113,15 +114,6 @@ const AddDishes = () => {
                             name="price"
                             {...register("price", { required: true})}/>
                             <div>{errors.price && "price is required"}</div>					
-                    </div>
-                    <div class="form-group d-flex ms-5">
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            placeholder="Enter Your Email" 
-                            name="email"
-                            {...register("email", { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ })}/>
-                            <div>{errors.email && "Email is required"}</div>					
                     </div>
                     <div className="form-group d-flex ms-5 justify-content-evenly">
                         <button type="submit" className="btn btn-primary ">Add Dish</button>
