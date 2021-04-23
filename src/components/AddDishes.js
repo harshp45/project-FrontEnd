@@ -72,10 +72,9 @@ const AddDishes = () => {
                     <div class="form-group d-flex ms-5">
                             <select  className="form-control"  {...register("location", { required: "select one option"})}>
                                 <option value="">--Select Location--</option>
-                                <option value="Toronto">Toronto</option>
-                                <option value="North York">North York</option>
                                 <option value="Etobicoke">Etobicoke</option>
-                                <option value="Scarborough">Scarborough</option>
+                                <option value="North York">North York</option>
+                                <option value="Downtown">Downtown</option>
                             </select>
                             <div>{errors.location && "Location is required"}</div>					
                     </div>
