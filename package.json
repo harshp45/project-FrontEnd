@@ -13,6 +13,7 @@
     "google-map-react": "^2.1.9",
     "jwt-decode": "^3.1.2",
     "material-ui-flags": "^1.2.4",
+    "multer": "^1.4.2",
     "parse-decimal-number": "^1.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
