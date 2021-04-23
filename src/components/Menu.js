@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory} from "react-router-dom";
-import { useLocation, Link} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import '../css/Menu.css';
 
@@ -59,13 +58,14 @@ function Menu()
     const [user, setUser] = useState([]);
     const [token, setToken] = useState("");
     const [loading,setLoading]=useState(true);
-    let location = useLocation();
     let history = useHistory(); 
     
 
     useEffect(()=>
     {
         var token = localStorage.getItem('token');
+        var place = localStorage.getItem('place');
+        console.log("Local place"+place);
         console.log(token);
         if(token==="")
         {
@@ -78,7 +78,9 @@ function Menu()
             setUser(decoded.user);
         }
 
-        fetch("https://dishes-backend.herokuapp.com/api/menu/list",{
+        fetch("https://dishes-backend.herokuapp.com/api/menu/listbymenu",{
+            method: 'POST',
+            body:JSON.stringify({location:place}),
             headers: {'Content-Type': 'application/json', 
             'x-access-token':token}
         })
@@ -90,7 +92,7 @@ function Menu()
 
     function menuList()
     {
-        console.log("Inside MEnu list:"+token);
+        console.log("Inside Menu list:"+token);
         return menu.map(data=>{
             return <Data new={data} currentUser={user} check={token}/>
         })

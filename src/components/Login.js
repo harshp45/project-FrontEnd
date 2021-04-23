@@ -28,27 +28,25 @@ const Login = () => {
     }
 
 
-      if (submitted) 
-      {
+    if (submitted) 
+    {
         var decoded = jwt_decode(token);
         localStorage.setItem('token', token);
         if(decoded.user.type==="seller")
         {
             return <Redirect push to={{
-              pathname: '/addDish',
-              state:{userToken:token}
+                pathname: '/addDish',
             }}
             /> 
         }
         if(decoded.user.type==="customer")
         {
             return <Redirect push to={{
-              pathname: '/menu',
-              state:{userToken:token}
+                pathname: '/userdashboard',
             }}
             />
         }
-      }
+    }
 
     return (
         <div className="body">

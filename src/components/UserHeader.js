@@ -4,6 +4,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import InfoIcon from '@material-ui/icons/Info';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import '../css/Template.css'
 import { Link } from 'react-router-dom';
 
@@ -26,7 +27,7 @@ function userHeader() {
                     <ul className="navbar-nav float-end mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link className="nav-link" activeClassName="active" to="/menu">
-                                <MenuBookIcon /> Menu
+                                <RestaurantMenuIcon /> Menu
                             </Link>
                         </li>
 

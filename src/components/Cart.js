@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import Subtotal from './Subtotal';
 import CartProduct from './CartProduct';
 import '../css/cart.css'
+import { parse } from '@babel/core';
 
 function Cart() {
     
@@ -50,11 +51,12 @@ function Cart() {
     for(var i=0;i<cart.length;i++)
     {
         
-        count = count + cart[i].price
+        count = parseFloat(count + cart[i].price)
         
     }
     console.log(itemCount);
-    console.log("Total Price: $"+count);
+    console.log("Total Price: $"+count.toFixed(2));
+
 
   return (
     <div>
@@ -68,8 +70,9 @@ function Cart() {
                     <div>
                         <span>
                             <Subtotal 
-                            totalprice={count}
+                            totalprice={count.toFixed(2)}
                             totalproducts={itemCount}
+                            wholecart={cart}
                             />
                         </span>
                     </div>

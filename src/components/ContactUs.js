@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import {useForm} from 'react-hook-form';
+import {Redirect} from 'react-router';
 import { useHistory} from "react-router-dom";
 import Location from './Location';
 
 function ContactUS() {
-
+    const {register, formState: { errors }, handleSubmit} = useForm();
     const [loading, setLoading]=useState(true);
+    const [submitted, setSubmitted] = useState(false);
     let history = useHistory(); 
 
     useEffect(()=>{
@@ -14,6 +17,28 @@ function ContactUS() {
       }
     })
 
+    const submit = (e) => {
+        fetch('https://dishes-backend.herokuapp.com/api/contact/sendMail', {
+          method: 'POST',
+          body: JSON.stringify(e),
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => 
+            { 
+                setSubmitted(true) 
+                response.json()
+            })
+        .then(data => console.log(data))
+      }
+
+
+      if (submitted) {
+        return <Redirect push to={{
+          pathname: '/',
+        }}
+        />
+      } 
+
  
   return (
     <div>
@@ -22,7 +47,7 @@ function ContactUS() {
                 <div className="row">
                     <div className="col-sm-6">
                         <h2 className="h4-color">Ask us anything!!!</h2>
-                        <form >
+                        <form onSubmit={handleSubmit(submit)} >
                             <div className="form-group d-flex ms-5">
                                 <span className="user-icon">
                                 <i className="fas fa-user"></i>
@@ -30,7 +55,9 @@ function ContactUS() {
                                 <input 
                                     type="text" 
                                     className="form-control" 
-                                    placeholder="Enter Name"/>
+                                    placeholder="Enter Name"
+                                    {...register("name", { required: true})}/>
+                                <div>{errors.name && "Name is required"}</div>
                             </div>
                             <div className="form-group d-flex ms-5">
                                 <span className="user-icon">
@@ -39,11 +66,14 @@ function ContactUS() {
                                 <input 
                                     type="text" 
                                     className="form-control" 
-                                    placeholder="Enter Email"/>
+                                    placeholder="Enter Email"
+                                    {...register("email", { required: true})}/>
+                                <div>{errors.email && "Email is required"}</div>
                             </div>
                             <div className="form-group d-flex ms-5">
                                 <span class="user-icon"><i class="fas fa-comments"></i></span>
-                            <textarea type="text" columns="50" required> Enter your comments here...</textarea>
+                            <textarea type="text" columns="50"  {...register("query", { required: true})}> Enter your comments here...</textarea>
+                            <div>{errors.query && "Query is required"}</div>
                             </div>
                             
                             <div className="form-group d-flex ms-5">
