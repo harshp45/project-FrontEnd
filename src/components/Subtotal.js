@@ -62,6 +62,19 @@ const Subtotal = ({totalprice, totalproducts, wholecart}) =>{
 
     if(selected)
     {
+        fetch('https://dishes-backend.herokuapp.com/api/cart/deleteByUser',{
+            method:'DELETE',
+            body: JSON.stringify({
+                email: user.email
+            }),
+            headers: {'Content-Type': 'application/json', 
+            'x-access-token':token}
+        })
+        .then(response =>response.json())
+        .then(data => 
+            { 
+                console.log(data); 
+            })
         return <Redirect push to={{
             pathname: '/confirmation',
           }}
