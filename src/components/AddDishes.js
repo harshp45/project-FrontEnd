@@ -31,7 +31,7 @@ const AddDishes = () => {
 
     const submit = (e) => {
 
-        fetch('http://localhost:4000/api/menu/add', {
+        fetch('https://dishes-backend.herokuapp.com/api/menu/add', {
           method: 'POST',
           body: JSON.stringify({
               itemname:e.itemname,
