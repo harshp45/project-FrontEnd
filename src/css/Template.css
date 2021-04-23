@@ -19,7 +19,7 @@
 .logo {
     font-family: 'Parisienne', cursive;
     font-size: xx-large;
-    color: #adf845 !important;
+    color: salmon !important;
     text-shadow: 0.3px 0.3px white;
 }
 
@@ -27,6 +27,12 @@
     font-size: 48px;
     color: rgb(219, 35, 35);
 }
+
+.hd-logo{
+    object-fit: contain;
+    width: 80px;
+    height: 50px;
+  }
 
 .location {
     color: rgb(82, 97, 52);
