@@ -1,1 +1,1 @@
-web: npm start && npm run-script server
+web: npm start & npm run-script server & wait -n
