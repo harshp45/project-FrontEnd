@@ -8,6 +8,7 @@ const Login = () => {
 
     const {register, formState: { errors }, handleSubmit} = useForm();
     const [token, setToken] = useState("");
+    const [loginError, setLoginError] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     const axios = require('axios');
@@ -19,11 +20,18 @@ const Login = () => {
             password:e.password
         })
         .then(function (response) {
-            setToken(response.data.token);
-            setSubmitted(true);
+            if(response.status===403)
+            {
+                console.log("Login Error");
+            }
+            if(response.status===200)
+            {
+                setToken(response.data.token);
+                setSubmitted(true);
+            }
         })
         .catch(function (error) {
-            console.log(error);
+            setLoginError("Invalid Credentials");
         })
     }
 
@@ -52,6 +60,7 @@ const Login = () => {
         <div className="body">
             <div className="login">
             <div className="container border">
+                <h4>{loginError}</h4>
                 <h4>Login</h4>
                 <form onSubmit={handleSubmit(submit)}>
                     <div className="form-group d-flex ms-5">
@@ -75,8 +84,7 @@ const Login = () => {
                             <div>{errors.password && "Password is required"}</div>						
                     </div>
                     <div className="form-group d-flex ms-5 justify-content-evenly">
-                        <button type="submit" className="btn btn-color">Submit</button>
-                        <a className="mt-2 f-pwd">Forgot password?</a>
+                        <button type="submit" className="btn btn-color">Sign In</button>
                     </div>
                 </form>
                 <hr></hr>
