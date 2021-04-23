@@ -1,17 +1,21 @@
 .subtotal-main-div {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 300px;
     padding: 20px;
     background-color: #f3f3f3;
     border: 1px solid #dddddd;
     border-radius: 3px;
-    float: right;
   }
 
+  .formIcon {
+    padding: 6px;
+    width: 50px;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    background-color: rgba(179, 180, 105, 0.918);
+  }
   
-  .subtotal-main-div > button {
+  .orderButton {
     background: #f0c14b;
     border-radius: 2px;
     width: 100%;

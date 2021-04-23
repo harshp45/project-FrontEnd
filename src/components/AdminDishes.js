@@ -6,6 +6,21 @@ import '../css/Menu.css';
 
 const Data = props =>
 {    
+    
+    function deleteDish(id)
+    {
+        console.log("Id:"+props.new._id);
+        fetch("https://dishes-backend.herokuapp.com/api/menu/delete",{
+            method: 'DELETE',
+            body: JSON.stringify({
+                id:id
+            }),
+            headers: {'Content-Type': 'application/json', 
+            'x-access-token':props.check}
+        })
+        .then(response =>response.json())
+        .then(data => { console.log(data) })
+    }
     const imgPath=`/dishes/${props.new.image}`
     console.log(imgPath); 
 
@@ -21,6 +36,10 @@ const Data = props =>
                     <p className="card-text"><b>Price:</b> {props.new.price}</p>
                     <p className="card-text"><b>Category: </b>{props.new.category}</p>
                     <p className="card-text"><b>Seller Name: </b>{props.currentUser.firstname}</p>
+                    <button 
+                        type="submit" 
+                        class="btn btn-danger"
+                        onClick={(e)=>deleteDish(props.new._id)}>Delete Dish</button>
                 </div>
             </div>
         </div>
@@ -34,13 +53,15 @@ function AdminDishes()
 {
     const [menu, setMenu] = useState([]);
     const [user, setUser] = useState([]);
+    const [token, setToken] = useState("");
     const [loading,setLoading]=useState(true);
     let location = useLocation();
     let history = useHistory(); 
     
     
 
-    useEffect(()=>{
+    useEffect(()=>
+    {
         var token = localStorage.getItem('token');
         console.log(token);
         if(token==="")
@@ -49,23 +70,24 @@ function AdminDishes()
         }
         else
         {
+            setToken(token);
             var decoded = jwt_decode(token);
             setUser(decoded.user);
         }
 
-    fetch("https://dishes-backend.herokuapp.com/api/menu/list",{
-        headers: {'Content-Type': 'application/json', 
-        'x-access-token':token}
-    })
-    .then(response =>response.json())
-    .then(data =>{ setMenu(data) })
+        fetch("https://dishes-backend.herokuapp.com/api/menu/list",{
+            headers: {'Content-Type': 'application/json', 
+            'x-access-token':token}
+        })
+        .then(response =>response.json())
+        .then(data =>{ setMenu(data) })
     }, []);
 
 
     function menuList()
     {
-        return menu.filter(item => item.sellerEmail===user.email).map(item=>{
-            return <Data new={item} currentUser={user}/>
+        return menu.map(item=>{
+            return <Data new={item} currentUser={user} check={token}/>
         })
     }
   

@@ -25,6 +25,12 @@ function userHeader() {
 
                 <div className="collapse navbar-collapse float-end" id="navbarSupportedContent">
                     <ul className="navbar-nav float-end mb-2 mb-lg-0">
+                    <li className="nav-item">
+                            <Link className="nav-link" activeClassName="active" to="/userdashboard">
+                                <RestaurantMenuIcon /> Dashboard
+                            </Link>
+                        </li>
+
                         <li className="nav-item">
                             <Link className="nav-link" activeClassName="active" to="/menu">
                                 <RestaurantMenuIcon /> Menu

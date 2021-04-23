@@ -9,6 +9,8 @@ import Login from './Login';
 import Logout from './Logout';
 import Header from './Header';
 import UserHeader from './UserHeader';
+import AdminHeader from './AdminHeader';
+import AdminDishes from './AdminDishes';
 import Menu from './Menu';
 import About from './About';
 import ContactUS from './ContactUs';
@@ -16,6 +18,7 @@ import Cart from './Cart';
 import AddDishes from './AddDishes';
 import Registration from "./Registration";
 import Userdashboard from "./Userdashboard";
+import Confirm from "./Confirm";
 
 
 
@@ -30,6 +33,10 @@ function App() {
          <Route exact path="/">
           <Header />
            <Login />
+         </Route>
+         <Route path="/myDishes">
+          <AdminHeader/>
+          <AdminDishes/>
          </Route>
 
          <Route path="/registration">
@@ -57,7 +64,7 @@ function App() {
          </Route>
 
          <Route path="/addDish">
-            <UserHeader />
+            <AdminHeader />
             <AddDishes />
          </Route>
 
@@ -69,6 +76,10 @@ function App() {
          <Route path="/userdashboard">
             <UserHeader />
             <Userdashboard />
+         </Route>
+         <Route path="/confirmation">
+            <UserHeader />
+            <Confirm />
          </Route>
         </Switch>
     </div>
