@@ -108,7 +108,7 @@ const Registration = () => {
                             className="form-control" 
                             placeholder="Enter Password" 
                             {...register("password", { required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/ })}/>
-                            <div>{errors.password && "Password is required"}</div>					
+                            <div>{errors.password && "Password should contain One uppercase, lowercase, number and character"}</div>					
                     </div>
                     <div className="form-group d-flex ms-5">
                     <span className="user-icon">
