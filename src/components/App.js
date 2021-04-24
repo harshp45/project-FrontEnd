@@ -90,7 +90,6 @@ function App() {
          <Route path="/confirmation">
             <UserHeader />
             <Confirm />
-            <Footer/>
          </Route>
         </Switch>
     </div>

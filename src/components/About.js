@@ -22,10 +22,16 @@ function About() {
       {loading?(
             <>
             <div className="container-fluid w-70 mt-2">
+              <div>
+              <h3><br/>“HOMESTYLE DELICACIES”, revolves around the idea of delivering homespun recipes to the customers and it also provides a platform for people 
+                who want their dishes to be made available online for sale. Food business owners, people who crave for homely and hygienic food, 
+                or people who cannot spare time for cooking from their busy schedule can join in and enjoy the benefits.</h3>
+                <br/>
+                </div>
               <div className="d-flex row">
                 <div className="col-12">
                   <h3 className="mx-auto text-lg-center w-75 text-info">
-                    Designed and Developed by: 
+                    Designed and Developed by: <br/>
                   </h3>
                 </div>
               </div>
@@ -67,6 +73,9 @@ function About() {
                   <a href="https://www.linkedin.com/in/prima-patel-2a08a211b/" rel="external" className="text-success">Prima Patel</a><br></br>
                 </h3>
               </div>
+              <div>
+              </div>
+              
           </div>
       </div>
             </>

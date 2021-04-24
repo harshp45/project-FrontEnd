@@ -35,13 +35,13 @@ const Confirm = () => {
     return (
         <div className="posi">
              {loading?(
-            <>
+            <div>
             <span className="tick"><i class="fas fa-check-circle fa-7x"></i> </span>
             <h2 className="mt-4">Order Confirmed</h2>
             <form onSubmit={handleSubmit(submit)}>
                 <button type="submit" className="orderButton">Return to dashboard</button>
             </form>
-            </>
+            </div>
             ):(
                 <>
                    {history.push("/")}
